@@ -15,7 +15,7 @@ db = Sequel.postgres(ENV['DB_NAME'], connect_opt)
 base_url = 'http://jyugyou.tomakomai-ct.ac.jp/jyugyou.php'
 
 CLASSES.each do |k, v|
-  url = base_url + "?class=#{k.to_s.upcase}"
+  url = base_url + "?class=#{k.to_s.upcase}&all=true"
   html = Nokogiri::HTML(open(url))
   table = html.search('table')[-1]
 
@@ -23,7 +23,7 @@ CLASSES.each do |k, v|
     data = {class: v}
     td0 = tr.search('td')[0]
     td0_text = td0.text.gsub('　', '').split
-    data[:date] = Date.strptime(td0_text[0], '%m月%d日')
+    data[:date] = Date.strptime(td0_text[0], '%Y年%m月%d日')
     data[:period] = td0_text[1]
 
     td1 = tr.search('td')[1]
