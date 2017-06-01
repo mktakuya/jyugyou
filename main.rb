@@ -2,7 +2,6 @@ require 'open-uri'
 require 'nokogiri'
 require 'sequel'
 require './classes'
-require 'pry'
 
 unless ENV.has_key?('DB_HOST') && ENV.has_key?('DB_USER') && ENV.has_key?('DB_PASSWORD') && ENV.has_key?('DB_NAME')
   puts 'Set db settings.'
