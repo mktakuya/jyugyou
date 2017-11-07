@@ -3,13 +3,13 @@ require 'nokogiri'
 require 'sequel'
 require './classes'
 
-unless ENV.has_key?('DB_HOST') && ENV.has_key?('DB_USER') && ENV.has_key?('DB_PASSWORD') && ENV.has_key?('DB_NAME')
+unless ENV.has_key?('JYUGYOU_DB_HOST') && ENV.has_key?('JYUGYOU_DB_USER') && ENV.has_key?('JYUGYOU_DB_PASSWORD') && ENV.has_key?('JYUGYOU_DB_NAME')
   puts 'Set db settings.'
   exit
 end
 
-connect_opt =  {"options"=>{"host"=>ENV['DB_HOST'], "user"=>ENV['DB_USER'], "password"=>ENV['DB_PASSWORD']}}
-db = Sequel.postgres(ENV['DB_NAME'], connect_opt)
+connect_opt =  {"options"=>{"host"=>ENV['JYUGYOU_DB_HOST'], "user"=>ENV['JYUGYOU_DB_USER'], "password"=>ENV['JYUGYOU_DB_PASSWORD']}}
+db = Sequel.postgres(ENV['JYUGYOU_DB_NAME'], connect_opt)
 
 base_url = 'http://jyugyou.tomakomai-ct.ac.jp/jyugyou.php'
 
